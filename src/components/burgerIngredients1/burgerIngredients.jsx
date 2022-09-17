@@ -8,8 +8,8 @@ import {
 } from "@ya.praktikum/react-developer-burger-ui-components";
 
 import burgerIngridientsStyles from "./burgerIngredients.module.css";
-import Modal from "../modal/modal";
-import IngridientDetails from "../ingredientDetails/ingredientDetails";
+import Modal from "../modal1/modal";
+import IngridientDetails from "../ingredientDetails1/ingredientDetails";
 
 import { cardPropTypes } from "../../utils/prop-types";
 
