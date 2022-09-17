@@ -9,7 +9,7 @@ import {
 
 import burgerIngridientsStyles from "./burgerIngredients.module.css";
 import Modal from "../modal1/modal";
-import IngridientDetails from "../ingredientDetails1/ingredientDetails";
+import IngridientDetails from "../ingredientDetails/ingredientDetails";
 
 import { cardPropTypes } from "../../utils/prop-types";
 
