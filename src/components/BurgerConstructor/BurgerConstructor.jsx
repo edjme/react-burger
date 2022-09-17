@@ -6,7 +6,7 @@ import {
   DragIcon,
   Button,
 } from "@ya.praktikum/react-developer-burger-ui-components";
-import burgerConstructorStyles from "./BurgerConstructor.module.css";
+import burgerConstructorStyles from "./burgerConstructor.module.css";
 import { cardPropTypes } from "../../utils/prop-types";
 import Modal from "../modal/modal";
 import OrderDetails from "../orderDetails/orderDetails";

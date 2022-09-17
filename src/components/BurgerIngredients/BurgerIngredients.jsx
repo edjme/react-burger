@@ -7,9 +7,9 @@ import {
   CurrencyIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 
-import burgerIngridientsStyles from "./BurgerIngredients.module.css";
+import burgerIngridientsStyles from "./burgerIngredients.module.css";
 import Modal from "../modal/modal";
-import IngridientDetails from "../IngredientDetails/IngredientDetails";
+import IngridientDetails from "../ingredientDetails/ingredientDetails";
 
 import { cardPropTypes } from "../../utils/prop-types";
 

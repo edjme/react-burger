@@ -1,6 +1,6 @@
 import React from "react";
 import { cardPropTypes } from "../../utils/prop-types";
-import ingridientDetailsStyles from "./IngredientDetails.module.css";
+import ingridientDetailsStyles from "./ingredientDetails.module.css";
 
 const IngridientDetails = ({ ingridient }) => {
   const { image_large, name, calories, proteins, fat, carbohydrates } =

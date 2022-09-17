@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import BurgerIngridients from "../BurgerIngredients/BurgerIngredients";
-import BurgerConstructor from "../BurgerConstructor/burgerConstructor";
-import AppHeader from "../AppHeader/appHeader";
+import BurgerIngridients from "../burgerIngredients/burgerIngredients";
+import BurgerConstructor from "../burgerConstructor/burgerConstructor";
+import AppHeader from "../appHeader/appHeader";
 
 import appStyles from "./app.module.css";
 
@@ -20,11 +20,11 @@ const App = () => {
   useEffect(() => {
     fetch(`${baseUrl}`)
       .then(checkResponse)
-      .then((res) => {
+      .then(res => {
         setData(res.data);
       })
-      .catch((err) => console.log(err));
-  }, []); // передаем пустой массив, чтобы запустить useEffect на момент первого рендера
+      .catch(err => console.log(err));
+  }, []); 
 
   return (
     <div className={appStyles.app}>
