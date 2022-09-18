@@ -44,7 +44,7 @@ const Card = ({ cardData }) => {
   };
 
   const modalIngridients = (
-    <Modal title="Детали ингредиента" closing={closeModal}>
+    <Modal title="Детали ингредиента" onClose={closeModal}>
       <IngridientDetails ingridient={cardData} />
     </Modal>
   );

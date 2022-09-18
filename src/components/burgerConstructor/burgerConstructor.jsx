@@ -92,7 +92,7 @@ const Order = ({ ingridientData }) => {
   };
 
   const modalOrder = (
-    <Modal closing={closeModal}>
+    <Modal onClose={closeModal}>
       <OrderDetails />
     </Modal>
   );

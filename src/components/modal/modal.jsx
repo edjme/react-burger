@@ -7,11 +7,11 @@ import ModalOverlay from "../modalOverlay/modalOverlay";
 
 const modalRoot = document.getElementById("react-modals");
 
-const Modal = ({ closing, ...props }) => {
+const Modal = ({ onClose, ...props }) => {
   useEffect(() => {
     const closeWithEsc = (evt) => {
       if ((evt.key === "Escape") || (evt.key === "Esc")) {
-        closing();
+        onClose();
       }
     };
     document.addEventListener("keyup", closeWithEsc);
@@ -20,11 +20,11 @@ const Modal = ({ closing, ...props }) => {
 
   return ReactDOM.createPortal(
     <>
-      <ModalOverlay closing={closing} />
+      <ModalOverlay onClose={onClose} />
       <div className={modalStyles.modal}>
         <h2 className="text text_type_main-large ml-10 mt-15">{props.title}</h2>
         <button className={modalStyles.button} type="button">
-          <CloseIcon type="primary" onClick={closing} />
+          <CloseIcon type="primary" onClick={onClose} />
         </button>
         {props.children}
       </div>
@@ -34,7 +34,7 @@ const Modal = ({ closing, ...props }) => {
 };
 
 Modal.propTypes = {
-  closing: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
   title: PropTypes.string,
   children: PropTypes.element,
 };
