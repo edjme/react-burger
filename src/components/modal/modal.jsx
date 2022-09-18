@@ -9,13 +9,13 @@ const modalRoot = document.getElementById("react-modals");
 
 const Modal = ({ closing, ...props }) => {
   useEffect(() => {
-    const closeEsc = (evt) => {
-      if (evt.key === "Escape" || evt.key === "Esc") {
+    const closeWithEsc = (evt) => {
+      if ((evt.key === "Escape") || (evt.key === "Esc")) {
         closing();
       }
     };
-    document.addEventListener("keyup", closeEsc);
-    return () => document.removeEventListener("keydown", closeEsc);
+    document.addEventListener("keyup", closeWithEsc);
+    return () => document.removeEventListener("keydown", closeWithEsc);
   }, []);
 
   return ReactDOM.createPortal(

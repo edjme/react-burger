@@ -69,10 +69,10 @@ Card.propTypes = {
 };
 
 const MenuList = ({ ingridientData, type }) => {
-  const typeData = ingridientData.filter((item) => item.type === type);
+  const typeData = ingridientData.filter(item => item.type === type);
   return (
     <ul className={`${burgerIngridientsStyles.menuItems}`}>
-      {typeData.map((item) => (
+      {typeData.map(item => (
         <Card key={item._id} cardData={item} />
       ))}
     </ul>
