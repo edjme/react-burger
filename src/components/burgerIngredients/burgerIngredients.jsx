@@ -44,7 +44,7 @@ const Card = ({ cardData }) => {
   };
 
   const modalIngridients = (
-    <Modal title="Детали ингредиента" closing={closeModal}>
+    <Modal title="Детали ингредиента" onClose={closeModal}>
       <IngridientDetails ingridient={cardData} />
     </Modal>
   );
@@ -69,10 +69,10 @@ Card.propTypes = {
 };
 
 const MenuList = ({ ingridientData, type }) => {
-  const typeData = ingridientData.filter((item) => item.type === type);
+  const typeData = ingridientData.filter(item => item.type === type);
   return (
     <ul className={`${burgerIngridientsStyles.menuItems}`}>
-      {typeData.map((item) => (
+      {typeData.map(item => (
         <Card key={item._id} cardData={item} />
       ))}
     </ul>

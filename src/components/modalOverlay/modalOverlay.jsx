@@ -3,7 +3,7 @@ import modalOverlayStyles from "./modalOverlay.module.css";
 
 export const ModalOverlay = (props) => {
   return (
-    <div className={modalOverlayStyles.overlay} onClick={props.closing}></div>
+    <div className={modalOverlayStyles.overlay} onClick={props.onClose}></div>
   );
 };
 
