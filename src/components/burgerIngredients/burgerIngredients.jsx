@@ -13,16 +13,16 @@ import IngridientDetails from "../ingredientDetails/ingredientDetails";
 
 import { cardPropTypes } from "../../utils/prop-types";
 
-import { useSelector, useDispatch } from 'react-redux';
-import { CLOSE_MODAL } from '../../services/actions/currentIngridient';
-import { getCurrentIngridient } from '../../services/actions/currentIngridient';
-import { useDrag } from 'react-dnd';
+import { useSelector, useDispatch } from "react-redux";
+import { CLOSE_MODAL } from "../../services/actions/currentIngridient";
+import { getCurrentIngridient } from "../../services/actions/currentIngridient";
+import { useDrag } from "react-dnd";
 
 const Card = ({ cardData, count }) => {
   const { image, price, name, _id: id } = cardData;
-  
+
   const [, dragRef] = useDrag({
-    type: 'ingridient',
+    type: "ingridient",
     item: cardData,
   });
 
@@ -31,33 +31,34 @@ const Card = ({ cardData, count }) => {
 
   const openModal = () => {
     setModalActive(true);
-    dispatch(getCurrentIngridient(cardData))    
+    dispatch(getCurrentIngridient(cardData));
   };
 
   const closeModal = () => {
     setModalActive(false);
     dispatch({
-      type: CLOSE_MODAL
-    }); 
+      type: CLOSE_MODAL,
+    });
   };
 
   const modalIngridients = (
-    <Modal title='Детали ингредиента' closing={closeModal}>
-      <IngridientDetails/>
-    </Modal >
+    <Modal title="Детали ингредиента" closing={closeModal}>
+      <IngridientDetails />
+    </Modal>
   );
 
-  return(
+  return (
     <>
-      <article className={burgerIngridientsStyles.card} 
+      <article
+        className={burgerIngridientsStyles.card}
         onClick={openModal}
         ref={dragRef}
       >
-        {(count > 0) && (<Counter count={count} size="default" />)}
-        <img src={image} alt={name} className='ml-4 mr-4 mb-1'/>
+        {count > 0 && <Counter count={count} size="default" />}
+        <img src={image} alt={name} className="ml-4 mr-4 mb-1" />
         <div className={`${burgerIngridientsStyles.priceItem} mt-1 mb-1`}>
-          <span className='text text_type_digits-default mr-1'>{price}</span>
-          <CurrencyIcon type='primary' />
+          <span className="text text_type_digits-default mr-1">{price}</span>
+          <CurrencyIcon type="primary" />
         </div>
         <span className={burgerIngridientsStyles.name}>{name}</span>
       </article>
@@ -71,10 +72,10 @@ Card.propTypes = {
   count: PropTypes.number,
 };
 
-
 const MenuList = ({ type }) => {
-
-  const { constructorItems, bun } = useSelector(store => store.constructorItems);
+  const { constructorItems, bun } = useSelector(
+    (store) => store.constructorItems
+  );
 
   const counter = useMemo(() => {
     const counts = {};
@@ -85,78 +86,83 @@ const MenuList = ({ type }) => {
       }
       counts[item._id]++;
     });
-      if (bun) {
-        counts[bun._id] = 2;
-      }
-      return counts;
+    if (bun) {
+      counts[bun._id] = 2;
+    }
+    return counts;
   }, [constructorItems, bun]);
 
-  const { ingridients } = useSelector(store => store.ingridients);
-  const typeData = ingridients.filter(item => item.type === type);
+  const { ingridients } = useSelector((store) => store.ingridients);
+  const typeData = ingridients.filter((item) => item.type === type);
 
-  return(
+  return (
     <div className={`${burgerIngridientsStyles.menuItems}`}>
-      {typeData.map(item => (
-        <Card key={item._id} cardData={item} count={counter[item._id]}/>
+      {typeData.map((item) => (
+        <Card key={item._id} cardData={item} count={counter[item._id]} />
       ))}
     </div>
   );
-}
+};
 
 MenuList.propTypes = {
-  type: PropTypes.oneOf(['bun', 'main', 'sauce']).isRequired,
+  type: PropTypes.oneOf(["bun", "main", "sauce"]).isRequired,
 };
 
 const BurgerIngridients = () => {
-  const [current, setCurrent] = useState('Булки')
+  const [current, setCurrent] = useState("Булки");
 
   const setTabScroll = (evt) => {
     const scrollTop = evt.target.scrollTop;
-   
-    if (scrollTop <= 250) {
-        setCurrent('Булки');
-    }
-    else if (scrollTop > 250 && scrollTop <= 750) {
-        setCurrent('Соусы');
-    }
-    else {
-        setCurrent('Начинки');
-    }
-  }
 
-  return(
+    if (scrollTop <= 250) {
+      setCurrent("Булки");
+    } else if (scrollTop > 250 && scrollTop <= 750) {
+      setCurrent("Соусы");
+    } else {
+      setCurrent("Начинки");
+    }
+  };
+
+  return (
     <section className={burgerIngridientsStyles.main}>
-      <h1 className='mt-10 mb-5 text text_type_main-large'>Соберите бургер</h1>
-      
+      <h1 className="mt-10 mb-5 text text_type_main-large">Соберите бургер</h1>
+
       <div className={burgerIngridientsStyles.tab}>
-        <Tab value="Булки" active={current === 'Булки'} onClick={setCurrent}>
+        <Tab value="Булки" active={current === "Булки"} onClick={setCurrent}>
           Булки
         </Tab>
-        <Tab value="Соусы" active={current === 'Соусы'} onClick={setCurrent}>
+        <Tab value="Соусы" active={current === "Соусы"} onClick={setCurrent}>
           Соусы
         </Tab>
-        <Tab value="Начинки" active={current === 'Начинки'} onClick={setCurrent}>
+        <Tab
+          value="Начинки"
+          active={current === "Начинки"}
+          onClick={setCurrent}
+        >
           Начинки
         </Tab>
       </div>
-      <div className={`${burgerIngridientsStyles.window} custom-scroll`} onScroll={setTabScroll}>
+      <div
+        className={`${burgerIngridientsStyles.window} custom-scroll`}
+        onScroll={setTabScroll}
+      >
         <ul className={burgerIngridientsStyles.menu}>
           <li>
-            <h2 className='text text_type_main-medium mt-10 mb-6'>Булки</h2>
-            <MenuList type='bun' />
+            <h2 className="text text_type_main-medium mt-10 mb-6">Булки</h2>
+            <MenuList type="bun" />
           </li>
           <li>
-            <h2 className='text text_type_main-medium mt-10 mb-6'>Соусы</h2>
-            <MenuList type='sauce' />
+            <h2 className="text text_type_main-medium mt-10 mb-6">Соусы</h2>
+            <MenuList type="sauce" />
           </li>
           <li>
-            <h2 className='text text_type_main-medium mt-10 mb-6'>Начинки</h2>
-            <MenuList type='main' />
+            <h2 className="text text_type_main-medium mt-10 mb-6">Начинки</h2>
+            <MenuList type="main" />
           </li>
         </ul>
       </div>
     </section>
   );
-}
+};
 
 export default BurgerIngridients;

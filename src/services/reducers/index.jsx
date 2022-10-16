@@ -107,7 +107,7 @@ export const orderReducer = (state = initialOrderState, action) => {
 // currentIngridientReducer
 
 const initialCurrentIngridientState = {
-  currentIngridient: null, 
+  currentIngredient: null,
 };
 
 export const currentIngridientReducer = (state = initialCurrentIngridientState, action) => {
