@@ -1,5 +1,7 @@
 .header {
   display: grid;
+  margin: 0;
+  padding: 0;
   grid-template-columns: repeat(3, 1fr);
   justify-items: center;
   align-items: center;
@@ -12,9 +14,12 @@
 
 .nav {
   display: flex;
+  margin: 0;
+  padding: 0;
 }
 
 .link {
+  display: flex;
   height: 56px;
   border-radius: 40px;
   background: #1c1c21;
@@ -22,6 +27,5 @@
   align-items: center;
   border: none;
   color: #f2f2f3;
-  display: flex;
   text-decoration: none;
 }

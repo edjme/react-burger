@@ -1,19 +1,21 @@
 .main {
   display: flex;
-  flex-direction: column;
   margin: 0;
+  padding: 0;
+  flex-direction: column;
   box-sizing: content-box;
 }
 
 .card {
+  display: flex;
   list-style: none;
   max-width: 272px;
   min-height: 208px;
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
+  cursor: pointer;
 }
 
 .priceItem {
