@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useMemo } from "react";
 import {
   CurrencyIcon,
   Button,
@@ -14,17 +14,14 @@ export const OrderTotal = () => {
     (store) => store.constructorItems
   );
   const { order, orderRequest } = useSelector((store) => store.order);
-  // const [modalActive, setModalActive] = useState(false);
   const orderItems = [bun, ...constructorItems, bun];
   const dispatch = useDispatch();
 
   const openModal = () => {
-    // setModalActive(true);
     dispatch(postOrder(orderItems)); // отправляем данные заказа
   };
 
   const closeModal = () => {
-    // setModalActive(false);
     dispatch({
       type: RESET_ORDER,
     });
@@ -62,9 +59,7 @@ export const OrderTotal = () => {
         </Button>
       </div>
       {orderRequest}
-      
       {order && modalOrder}
     </>
   );
 };
-// {order && modalActive && modalOrder}

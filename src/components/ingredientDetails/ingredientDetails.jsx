@@ -1,7 +1,4 @@
-import React from "react";
-import { cardPropTypes } from "../../utils/prop-types";
 import ingridientDetailsStyles from "./ingredientDetails.module.css";
-
 import { useSelector } from "react-redux";
 
 const IngridientDetails = () => {

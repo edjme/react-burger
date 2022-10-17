@@ -7,9 +7,7 @@ import { useDrag, useDrop } from "react-dnd";
 
 import {
   ConstructorElement,
-  CurrencyIcon,
   DragIcon,
-  Button,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import burgerConstructorStyles from "../burgerConstructor/burgerConstructor";
 import { useDispatch } from "react-redux";

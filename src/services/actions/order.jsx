@@ -18,7 +18,7 @@ export function postOrder(ingridientData) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ingredients: ingridientsID}),
+      body: JSON.stringify({ ingredients: ingridientsID }),
     })
       .then(checkResponse)
       .then((res) => {
