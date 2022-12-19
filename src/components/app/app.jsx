@@ -1,38 +1,31 @@
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import BurgerIngridients from "../burgerIngredients/burgerIngredients";
 import BurgerConstructor from "../burgerConstructor/burgerConstructor";
-import AppHeader from "../appHeader/appHeader";
 
+import AppHeader from "../appHeader/appHeader";
 import appStyles from "./app.module.css";
 
-function checkResponse(res) {
-  if (res.ok) {
-    return res.json();
-  }
-  return Promise.reject(`Ошибка: ${res.status}`);
-}
+import { useDispatch } from "react-redux";
+import { getIngridients } from "../../services/actions/ingridients";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 const App = () => {
-  const [data, setData] = useState([]);
-
-  const baseUrl = "https://norma.nomoreparties.space/api/ingredients";
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch(`${baseUrl}`)
-      .then(checkResponse)
-      .then(res => {
-        setData(res.data);
-      })
-      .catch(err => console.log(err));
-  }, []); 
+    dispatch(getIngridients());
+  }, [dispatch]);
 
   return (
     <div className={appStyles.app}>
       <AppHeader />
-      <main className={appStyles.main}>
-        <BurgerIngridients ingridients={data} />
-        <BurgerConstructor ingridients={data} />
-      </main>
+      <DndProvider backend={HTML5Backend}>
+        <main className={appStyles.main}>
+          <BurgerIngridients />
+          <BurgerConstructor />
+        </main>
+      </DndProvider>
     </div>
   );
 };
