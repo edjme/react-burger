@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 export const ModalOverlay = (props) => {
   return (
-    <div className={modalOverlayStyles.overlay} onClick={props.closing}></div>
+    <div className={modalOverlayStyles.overlay} onClick={props.onClose}></div>
   );
 };
 
