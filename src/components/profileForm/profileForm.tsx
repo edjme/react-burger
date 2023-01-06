@@ -12,6 +12,8 @@ import {
 } from "../../services/actions/auth";
 import styles from "./profileForm.module.css";
 
+import { useForm } from "../../services/hooks/useForm"
+
 export const ProfileForm: FC = () => {
   const dispatch = useDispatch();
   const form = useSelector((store) => store.user.form);
@@ -25,6 +27,12 @@ export const ProfileForm: FC = () => {
     });
     setActionButtons(true);
   };
+
+  const {values, handleChange, setValues} = useForm({});
+
+
+
+
 
   const onSubmitForm = (evt: FormEvent) => {
     evt.preventDefault();
