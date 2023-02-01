@@ -4,4 +4,4 @@
 
 ## Использованные технологии
 
-HTML, CSS, React, Grid, Flex
+HTML, CSS, React, Grid, Flex, TypeScript
