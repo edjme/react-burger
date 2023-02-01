@@ -55,12 +55,12 @@ export const placeOrderDate = (date: string) => {
     : isYesterday(dateCreatedAt)
     ? 'Вчера'
     : formatDistanceToNowStrict(dateCreatedAt, {
-        unit: 'day',      // кол-во дней, если не 'сегодня-вчера'
-        addSuffix: true, // 'назад'
+        unit: 'day',
+        addSuffix: true,
         locale: ru,
       });
 
-  const hours = format(dateCreatedAt, 'p', {locale: ru}); //24-ч 'русская' система
+  const hours = format(dateCreatedAt, 'p', {locale: ru}); //24 часа
   
   return `${day}, ${hours} i-GMT+3`;
 };
